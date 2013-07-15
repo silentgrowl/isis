@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+# encoding: UTF-8
+
+lib_dir = File.expand_path(File.join(File.dirname(__FILE__), '../lib'))
+$LOAD_PATH.unshift lib_dir if File.exist?(File.join(lib_dir, 'isis.rb'))
+
+require 'bundler/setup'
+require 'active_support/core_ext'
+require 'isis'
+require 'isis/chatbot'
+require 'eventmachine'
+require 'pry' if ENV['DEBUG']
+require 'pry-rescue' if ENV['DEBUG']
+
+EM.run do
+  @bot = Isis::Chatbot.new
+
+  # Tramps like us, baby we were born to...
+  @bot.run
+end

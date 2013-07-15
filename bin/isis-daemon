@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'daemons'
+
+options = {
+  app_name: 'isis',
+  dir_mode: :normal,
+  dir: '/var/run',
+  log_dir: '/var/log',
+  log_output: true,
+  backtrace: true,
+  monitor: false
+}
+
+Daemons.run File.dirname(__FILE__) + '/isis', options

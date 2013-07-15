@@ -1,0 +1,88 @@
+# config.yml
+
+## BOT SETTINGS ##
+# Supported values: hipchat, campfire
+service: hipchat
+
+# Timezone name from tz database
+# See: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: 'America/Los_Angeles'
+
+# Bot greetings
+hello: 'Hello!'
+goodbye: 'NO CARRIER'
+
+## HIPCHAT SETTINGS ##
+hipchat:
+  # Jabber ID
+  # Find on HipChat websute in Account Settings > XMPP/Jabber Info
+  jid: DDDD_XXXXX@chat.hipchat.com
+
+  # Name and password
+  # Name must match the 'Full Name' in account's Account Settings
+  name: Full Name
+  password: password
+
+  # API Auth Token for posting HTML messages to room - must be an Admin token
+  # Create tokens in Group Admin > API tab
+  token: token
+
+  # Jabber IDs of rooms, find in Account Settings > XMPP/Jabber Info
+  rooms:
+    - DDDD_room_name@conf.hipchat.com
+    # - DDDD_second_room_name@conf.hipchat.com
+
+## CAMPFIRE SETTINGS ##
+campfire:
+  subdomain: subdomain  # from subdomain.campfirenow.com
+  # auth_mode: Can use API key or username/password.
+  # Supported values: api, username
+  auth_mode: api
+  api_key: api_key_goes_here  # enter if using 'api' auth_mode
+  username: username          # enter if using 'username' auth_mode
+  password: password          # also enter if using 'username' auth_mode
+  ssl: true
+  rooms:
+    - 'Room 1'
+    - 'Room 2'
+
+## PLUGIN SETTINGS ##
+# Comment out line to disable plugin
+enabled_plugins:
+  - AnimalsBeingJerks
+  - AwkwardFamilyPhotos
+  - Bash
+  - BBCWorldNews
+  - CatFacts
+  - Compliment
+  - ComputerHistory
+  - DailyKitten
+  - DailyPuppy
+  - DefProgramming
+  - DesignMilk
+  - Domain
+  - EpicFail
+  - FamilyCircus
+  - FML
+  - GarfieldMinusGarfield
+  - HackADay
+  - HackerNews
+  - Insult
+  - IsUp
+  - KittenWar
+  - LikeABoss
+  - LOLCats
+  - Lynda
+  - MissionStatement
+  - PennyArcade
+  - PeopleOfWalmart
+  - PizzaGifs
+  - RubyFlow
+  - Scheduler
+  - SmashingMagazine
+  - StockTicker
+  - ThatsWhatSheSaid
+  - Uptime
+  - Weather
+  - WebDesignLedger
+  - XKCD
