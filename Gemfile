@@ -1,8 +1,8 @@
 source 'https://www.rubygems.org'
 
 # The released xmppr4 gem is quite dated, and has bugs
-gem 'xmpp4r', git: 'https://github.com/whitehat101/xmpp4r.git', platforms: :ruby
-gem 'smackr', '0.0.6', git: 'https://github.com/brendonrapp/smackr.git', platforms: :jruby
+gem 'xmpp4r', git: 'https://github.com/silentgrowl/xmpp4r.git', platforms: :ruby
+gem 'smackr', '0.0.6', git: 'https://github.com/silentgrowl/smackr.git', platforms: :jruby
 gem 'tinder' # Campfire
 gem 'eventmachine'
 gem 'daemons'
@@ -24,7 +24,7 @@ gem 'whois'
 # HackerNews
 gem 'ruby-hackernews'
 
-# Yahoo Finance
+# StockTicker
 gem 'yahoofinance'
 
 # Uptime
