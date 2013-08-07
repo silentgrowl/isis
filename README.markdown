@@ -59,6 +59,9 @@
 - EpicFail
   - command: say "fail" in a line of chat
   - posts random image from [epicfail.com](http://epicfail.com)
+- Excuses
+  - command: !excuse (or !excuses)
+  - posts random excuse from [Developer Excuses](http://developerexcuses.com) or [BOFH Excuses](http://bofh.gotblah.com/)
 - Nietzsche Family Circus
   - command: !familycircus (or !nfc), or say "nietzsche" in a line of chat
   - posts comic from [Nietzsche Family Circus](http://nietzschefamilycircus.com)
