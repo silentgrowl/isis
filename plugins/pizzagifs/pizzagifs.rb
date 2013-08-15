@@ -11,10 +11,6 @@ class PizzaGifs < Isis::Plugin::Base
 
   private
 
-  def response_html
-    %Q(<img src="#{scrape}" />)
-  end
-
   def response_text
     scrape
   end
