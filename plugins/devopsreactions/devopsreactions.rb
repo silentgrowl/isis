@@ -14,7 +14,8 @@ class DevopsReactions < Isis::Plugin::Base
   def response_html
     page = Nokogiri.HTML(open('http://devopsreactions.tumblr.com/random'))
     img = page.css('.item_content p img').attr('src').value
-    "<img src=\"#{img}\">"
+    title = page.css('.post_title a').text
+    "#{title} <img src=\"#{img}\">"
   end
 
   def response_text
