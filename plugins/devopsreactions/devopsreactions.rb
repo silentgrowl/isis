@@ -21,6 +21,6 @@ class DevopsReactions < Isis::Plugin::Base
   def response_text
     page = Nokogiri.HTML(open('http://devopsreactions.tumblr.com/random'))
     title = page.css('.post_title a').text
-    "#{title}"
+    "#{title} #{img}"
   end
 end
