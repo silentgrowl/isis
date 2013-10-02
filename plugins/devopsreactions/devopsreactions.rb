@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 
-class AnimalsBeingJerks < Isis::Plugin::Base
+class DevopsReactions < Isis::Plugin::Base
 
   TRIGGERS = %w(!devops !devopsreactions)
 
