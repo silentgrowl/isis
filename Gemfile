@@ -9,6 +9,7 @@ gem 'daemons'
 gem 'hipchat'
 gem 'gsl4r'
 gem 'activesupport'
+gem 'net-ssh'
 
 # Plugins
 gem 'nokogiri'
