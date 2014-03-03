@@ -71,9 +71,9 @@ class Isis::Connections::HipChat < Isis::Connections::Base
     end
   end
 
-  def speak_html(room, message)
+  def speak_html(room, message, color = 'gray')
     @api[room.name].send(@config['hipchat']['name'], message,
-                         color: 'gray', message_format: 'html')
+                         color: color, message_format: 'html')
     puts %Q(saying: "#{message}" via API)
   end
 
