@@ -10,12 +10,17 @@ module Isis
         setup
       end
 
+      def respond_to_message?(message)
+        respond_to_msg?(message.content, message.speaker)
+      end
+
+      # Deprecated - update plugins to use respond_to_message? instead
       def respond_to_msg?(msg, speaker)
         nil
       end
 
-      def receive_message(msg, speaker, types)
-        respond_to_msg?(msg, speaker) ? response(types) : nil
+      def receive_message(message, types)
+        respond_to_message?(message) ? response(types) : nil
       end
 
       def response(types)

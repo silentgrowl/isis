@@ -27,12 +27,18 @@ class Isis::Connections::HipChatMRI < Isis::Connections::HipChat
   def message_response_callback(xmpp_room)
     xmpp_room.on_message do |time, speaker, message|
       unless speaker == @config['hipchat']['name']
-        room = room_from_jid("#{xmpp_room.jid.node}@#{xmpp_room.jid.domain}")
-        puts %Q(MESSAGE: r:#{room.name} s:#{speaker} m:#{message})
+        begin
+          room = room_from_jid("#{xmpp_room.jid.node}@#{xmpp_room.jid.domain}")
+          msg = Isis::Message.new(content: message, speaker: speaker, room: room)
+          puts %Q(MESSAGE: r:#{room.name} s:#{msg.speaker} m:#{msg.content})
+        rescue => e
+          puts "ERROR in message response callback"
+          puts "Message: #{e.message}"
+        end
         @plugins.each do |plugin|
           begin
             puts "Sending message to #{plugin}" if ENV['DEBUG']
-            response = plugin.receive_message(message, speaker, RESPONSE_TYPES)
+            response = plugin.receive_message(msg, RESPONSE_TYPES)
             speak_response(response, room)
           rescue => e
             puts "ERROR: Plugin #{plugin.class.name} just crashed"

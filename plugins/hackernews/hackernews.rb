@@ -3,8 +3,8 @@ require 'ruby-hackernews'
 class HackerNews < Isis::Plugin::Base
   TRIGGERS = %w(!hn !hackernews)
 
-  def respond_to_msg?(msg, speaker)
-    TRIGGERS.include? msg.downcase
+  def respond_to_message?(message)
+    TRIGGERS.include? message.content.downcase
   end
 
   private

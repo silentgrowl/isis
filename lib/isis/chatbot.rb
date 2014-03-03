@@ -5,6 +5,7 @@ require 'tzinfo'
 require 'singleton'
 require 'isis/plugins'
 require 'isis/connections'
+require 'isis/message'
 
 module Isis
   class Chatbot

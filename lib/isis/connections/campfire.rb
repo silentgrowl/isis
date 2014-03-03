@@ -80,12 +80,12 @@ class Isis::Connections::Campfire < Isis::Connections::Base
     room.listen do |message|
       if %w(TextMessage PasteMessage).include? message[:type]
         puts "message hash: #{message} in room: #{room.name}"
-        msg, speaker = message[:body], message[:user][:name]
+        msg = Isis::Message.new(content: message[:body], speaker: message[:user][:name], room: room.name)
         unless speaker == @name
-          puts %Q(MESSAGE: r:#{room.name} s:#{speaker} m:#{msg})
+          puts %Q(MESSAGE: r:#{room.name} s:#{msg.speaker} m:#{msg.content})
           @plugins.each do |plugin|
             begin
-              response = plugin.receive_message(msg, speaker, RESPONSE_TYPES)
+              response = plugin.receive_message(msg, RESPONSE_TYPES)
               speak_response(response, room)
             rescue => e
               puts "ERROR: Plugin #{plugin.class.name} just crashed"

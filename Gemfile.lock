@@ -1,11 +1,11 @@
 GIT
-  remote: https://github.com/brendonrapp/smackr.git
-  revision: d91679748e64e7a13209fc7339b0c7d8fd0b1d2b
+  remote: https://github.com/silentgrowl/smackr.git
+  revision: a73b48bbb4c150e4ea1b463fbf28b3e1fb538f8d
   specs:
-    smackr (0.0.6-java)
+    smackr (0.0.6)
 
 GIT
-  remote: https://github.com/whitehat101/xmpp4r.git
+  remote: https://github.com/silentgrowl/xmpp4r.git
   revision: d51f71e8226d829908e9c9335c32ab675753ee59
   specs:
     xmpp4r (0.5)
@@ -84,7 +84,7 @@ GEM
     pry-rescue (1.1.1)
       interception (>= 0.3)
       pry
-    rdoc (3.12.1)
+    rdoc (4.1.1)
       json (~> 1.4)
     ref (1.0.5)
     require_all (1.2.1)

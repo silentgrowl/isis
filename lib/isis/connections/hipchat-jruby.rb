@@ -41,13 +41,14 @@ class Isis::Connections::HipChatJRuby < Isis::Connections::HipChat
   def message_response_callback(packet, xmpp_room)
     speaker = parse_name(packet.from)
     return nil if speaker == @config['hipchat']['name']
-    message = packet.body
+    content = packet.body
     room = room_from_jid(xmpp_room.get_room)
-    puts %Q(MESSAGE: r:#{room.name} s:#{speaker} m:#{message})
+    message = Isis::Message.new(content: content, speaker: speaker, room: room)
+    puts %Q(MESSAGE: r:#{room.name} s:#{message.speaker} m:#{message.content})
     @plugins.each do |plugin|
       begin
         puts "Sending message to #{plugin}" if ENV['DEBUG']
-        response = plugin.receive_message(message, speaker, RESPONSE_TYPES)
+        response = plugin.receive_message(message, RESPONSE_TYPES)
         speak_response(response, room)
       rescue => e
         puts "ERROR: Plugin #{plugin.class.name} just crashed"

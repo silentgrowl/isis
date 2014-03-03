@@ -15,7 +15,7 @@ goodbye: 'NO CARRIER'
 ## HIPCHAT SETTINGS ##
 hipchat:
   # Jabber ID
-  # Find on HipChat websute in Account Settings > XMPP/Jabber Info
+  # Find on HipChat website in Account Settings > XMPP/Jabber Info
   jid: DDDD_XXXXX@chat.hipchat.com
 
   # Name and password
