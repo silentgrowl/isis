@@ -25,6 +25,9 @@ gem 'whois'
 # HackerNews
 gem 'ruby-hackernews'
 
+# Foursquare
+gem 'foursquare2'
+
 # StockTicker
 gem 'yahoofinance'
 
