@@ -68,6 +68,9 @@
 - FML
   - command: !fml
   - posts random story from fmylife.com
+- Foursquare
+  - command: !lunch !hungry !food !dinner !breakfast [cheap, fancy]
+  - posts a random restaurant in the area from the [FourSquare API](https://developer.foursquare.com/)
 - Garfield Minus Garfield
   - command: !garfieldminusgarfield (or !garfield or !gmg), or say "garfield" in a line of chat
   - posts random comic from [Garfield Minus Garfield](http://garfieldminusgarfield.net)
