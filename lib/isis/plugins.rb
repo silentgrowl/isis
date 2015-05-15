@@ -5,6 +5,10 @@ module Isis
     end
 
     class Base
+      def self.descendents
+        ObjectSpace.each_object(Class).select { |klass| klass < self }
+      end
+
       def initialize(bot)
         @bot = bot
         setup

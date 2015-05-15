@@ -1,2 +1,4 @@
-config.yml
 CurrentJDK
+!config/
+config/*
+!config/isis.yml.example

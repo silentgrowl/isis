@@ -12,7 +12,21 @@ timezone: 'America/Los_Angeles'
 hello: 'Hello!'
 goodbye: 'NO CARRIER'
 
+####################
+## SLACK SETTINGS ##
+####################
+slack:
+  token: token
+  username: isis
+  name: Full Name
+  icon:
+  channels:
+    - general
+    - random
+
+######################
 ## HIPCHAT SETTINGS ##
+######################
 hipchat:
   # Jabber ID
   # Find on HipChat website in Account Settings > XMPP/Jabber Info
@@ -32,7 +46,9 @@ hipchat:
     - DDDD_room_name@conf.hipchat.com
     # - DDDD_second_room_name@conf.hipchat.com
 
+#######################
 ## CAMPFIRE SETTINGS ##
+#######################
 campfire:
   subdomain: subdomain  # from subdomain.campfirenow.com
   # auth_mode: Can use API key or username/password.
@@ -45,47 +61,3 @@ campfire:
   rooms:
     - 'Room 1'
     - 'Room 2'
-
-## PLUGIN SETTINGS ##
-# Comment out line to disable plugin
-enabled_plugins:
-  - AnimalsBeingJerks
-  - AwkwardFamilyPhotos
-  - Bash
-  - BBCWorldNews
-  - CatFacts
-  - Compliment
-  - ComputerHistory
-  - DailyKitten
-  - DailyPuppy
-  - DefProgramming
-  - DevopsReactions
-  - DesignMilk
-  - Domain
-  - EpicFail
-  - Excuses
-  - FamilyCircus
-  - FML
-  - Foursquare
-  - GarfieldMinusGarfield
-  - HackADay
-  - HackerNews
-  - Insult
-  - IsUp
-  - KittenWar
-  - LikeABoss
-  - LOLCats
-  - Lynda
-  - MissionStatement
-  - PennyArcade
-  - PeopleOfWalmart
-  - PizzaGifs
-  - RubyFlow
-  - Scheduler
-  - SmashingMagazine
-  - StockTicker
-  - ThatsWhatSheSaid
-  - Uptime
-  - Weather
-  - WebDesignLedger
-  - XKCD

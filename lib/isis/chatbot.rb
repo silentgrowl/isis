@@ -108,8 +108,8 @@ module Isis
     private
 
     def load_config
-      config_file = File.join(ROOT_FOLDER, 'config.yml')
-      raise 'Isis config.yml file not found' unless File.exists?(config_file)
+      config_file = File.join(ROOT_FOLDER, 'config', 'isis.yml')
+      raise 'Isis config isis.yml file not found' unless File.exists?(config_file)
       @config = YAML.load(File.read(config_file))
       check_config
       @timezone = TZInfo::Timezone.get(@config['timezone'])
@@ -117,11 +117,11 @@ module Isis
 
     def load_plugins
       @plugins = []
-      @config['enabled_plugins'].each do |plugin|
-        result = require File.join(File.dirname(__FILE__), "../../plugins/#{plugin.downcase}/#{plugin.downcase}")
-        puts "Require of #{plugin}: #{result}" if ENV['DEBUG']
+      puts "Plugins: #{Isis::Plugin::Base.descendents}" if ENV['DEBUG']
+      Isis::Plugin::Base.descendents.each do |plugin|
         begin
-          plugin_instance = instance_eval(plugin).new(self)
+          puts "Loading #{plugin}" if ENV['DEBUG']
+          plugin_instance = plugin.new(self)
           @plugins << plugin_instance
         rescue Isis::Plugin::PluginSetupError => e
           puts %Q(Error loading plugin "#{plugin}": #{e})
@@ -137,6 +137,8 @@ module Isis
     def create_connection
       @hello_messages = []
       @connection = case @config['service']
+                    when 'slack'
+                      Isis::Connections::Slack.new(config)
                     when 'hipchat'
                       if RUBY_PLATFORM =~ /java/
                         Isis::Connections::HipChatJRuby.new(config)
