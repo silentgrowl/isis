@@ -48,14 +48,16 @@ class Isis::Connections::Slack < Isis::Connections::Base
           puts "Message: #{e.message}"
         end
         @plugins.each do |plugin|
-          begin
-            puts "Sending message to #{plugin}" if ENV['DEBUG']
-            response = plugin.receive_message(msg, RESPONSE_TYPES)
-            response.room = room if response.is_a?(Isis::Plugin::Base::Response)
-            speak_response(response)
-          rescue => e
-            puts "ERROR: Plugin #{plugin.class.name} just crashed"
-            puts "Message: #{e.message}"
+          Thread.new do
+            begin
+              puts "Sending message to #{plugin}" if ENV['DEBUG']
+              response = plugin.receive_message(msg, RESPONSE_TYPES)
+              response.room = room if response.is_a?(Isis::Plugin::Base::Response)
+              speak_response(response)
+            rescue => e
+              puts "ERROR: Plugin #{plugin.class.name} just crashed"
+              puts "Message: #{e.message}"
+            end
           end
         end
       end
