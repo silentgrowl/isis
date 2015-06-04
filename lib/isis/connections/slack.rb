@@ -17,22 +17,53 @@ class Isis::Connections::Slack < Isis::Connections::Base
     join_channels
     create_realtime_client
     set_message_handler
+    set_connection_handler
+    set_disconnection_handler
     @client.start
     @join_time = Time.now
   end
 
-  # TODO: add real connection check
   def still_connected?
-    true
+    @connected
   end
 
   def join
     nil
   end
 
+  def timer_response
+    @plugins.each do |plugin|
+      response = plugin.timer_response(RESPONSE_TYPES)
+      speak_response(response)
+    end
+  end
+
+  private
+
+  def configure_slack
+    Slack.configure do |config|
+      config.token = @config['slack']['token']
+      puts "token: #{config.token}" if ENV['DEBUG']
+    end
+    @username = @config['slack']['username']
+    @name = @config['slack']['name']
+    @icon = @config['slack']['icon']
+    @channels = @config['slack']['channels']
+    @connected = false
+  end
+
+  def create_realtime_client
+    @client = Slack.realtime
+  end
+
+  def join_channels
+    @channels.each do |ch|
+      Slack.channels_join(name: ch)
+    end
+  end
+
   def set_message_handler
     @client.on(:message) do |e|
-      # type = e["type"]
       message = e["text"]
       speaker_id = e["user"]
       channel_id = e["channel"]
@@ -64,33 +95,17 @@ class Isis::Connections::Slack < Isis::Connections::Base
     end
   end
 
-  def timer_response
-    @plugins.each do |plugin|
-      response = plugin.timer_response(RESPONSE_TYPES)
-      speak_response(response)
+  def set_connection_handler
+    @client.on(:open) do
+      @connected = true
+      puts "Connected to Slack"
     end
   end
 
-  private
-
-  def configure_slack
-    Slack.configure do |config|
-      config.token = @config['slack']['token']
-      puts "token: #{config.token}" if ENV['DEBUG']
-    end
-    @username = @config['slack']['username']
-    @name = @config['slack']['name']
-    @icon = @config['slack']['icon']
-    @channels = @config['slack']['channels']
-  end
-
-  def create_realtime_client
-    @client = Slack.realtime
-  end
-
-  def join_channels
-    @channels.each do |ch|
-      Slack.channels_join(name: ch)
+  def set_disconnection_handler
+    @client.on(:close) do
+      @connected = false
+      puts "Disconnected from Slack"
     end
   end
 
