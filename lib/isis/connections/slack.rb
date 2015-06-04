@@ -23,6 +23,10 @@ class Isis::Connections::Slack < Isis::Connections::Base
     @join_time = Time.now
   end
 
+  def reconnect
+    connect
+  end
+
   def still_connected?
     @connected
   end
