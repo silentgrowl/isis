@@ -144,6 +144,7 @@ class Isis::Connections::Slack < Isis::Connections::Base
   end
 
   def speak(room, message, type = 'text')
+    room = "##{room}"
     if type == 'md'
       speak_md(room, message)
     else
