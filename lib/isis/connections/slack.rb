@@ -36,6 +36,7 @@ class Isis::Connections::Slack < Isis::Connections::Base
   end
 
   def timer_response
+    Slack.users_setActive
     @plugins.each do |plugin|
       response = plugin.timer_response(RESPONSE_TYPES)
       speak_response(response)
