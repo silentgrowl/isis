@@ -28,7 +28,7 @@ class Isis::Connections::Slack < Isis::Connections::Base
   end
 
   def still_connected?
-    @connected
+    true
   end
 
   def join
