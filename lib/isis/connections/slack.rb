@@ -52,7 +52,7 @@ class Isis::Connections::Slack < Isis::Connections::Base
             begin
               puts "Sending message to #{plugin}" if ENV['DEBUG']
               response = plugin.receive_message(msg, RESPONSE_TYPES)
-              response.room = room if response.is_a?(Isis::Plugin::Base::Response)
+              response.room = channel_id if response.is_a?(Isis::Plugin::Base::Response)
               speak_response(response)
             rescue => e
               puts "ERROR: Plugin #{plugin.class.name} just crashed"
@@ -117,7 +117,7 @@ class Isis::Connections::Slack < Isis::Connections::Base
   def speak_response(response)
     unless response.blank?
       if response.content.respond_to?('each')
-        response.content.each { |line| speak(room, line, response.type) }
+        response.content.each { |line| speak(response.room, line, response.type) }
       else
         speak(response.room, response.content, response.type)
       end
