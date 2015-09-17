@@ -7,6 +7,7 @@ $LOAD_PATH.unshift lib_dir if File.exist?(File.join(lib_dir, 'isis.rb'))
 require 'bundler/setup'
 require 'isis'
 require 'isis/chatbot'
+require 'active_support'
 require 'active_support/core_ext'
 require 'open-uri'
 
