@@ -2,3 +2,5 @@ CurrentJDK
 !config/
 config/*
 !config/isis.yml.example
+tags
+.bundle/

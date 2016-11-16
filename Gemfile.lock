@@ -1,14 +1,4 @@
 GIT
-  remote: git://github.com/brendonrapp/slack-ruby-gem.git
-  revision: d2bb2229198ef42a188886a0f941f16173650562
-  specs:
-    slack-api (1.1.3)
-      faraday (>= 0.7, < 0.10)
-      faraday_middleware (~> 0.8)
-      faye-websocket (~> 0.9.2)
-      multi_json (~> 1.0, >= 1.0.3)
-
-GIT
   remote: https://github.com/silentgrowl/smackr.git
   revision: a73b48bbb4c150e4ea1b463fbf28b3e1fb538f8d
   specs:
@@ -41,10 +31,10 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     eventmachine (1.0.0)
     eventmachine (1.0.0-java)
-    faraday (0.8.5)
-      multipart-post (~> 1.1)
-    faraday_middleware (0.9.0)
-      faraday (>= 0.7.4, < 0.9)
+    faraday (0.9.2)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.10.1)
+      faraday (>= 0.7.4, < 1.0)
     faye-websocket (0.9.2)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
@@ -52,7 +42,7 @@ GEM
     ffi (1.9.8-java)
     google-search (1.0.3)
       json
-    hashie (1.2.0)
+    hashie (3.4.3)
     hipchat (0.7.0)
       httparty
     http-cookie (1.0.2)
@@ -115,8 +105,8 @@ GEM
     isis-plugin-webdesignledger (1.0.0)
     isis-plugin-xkcd (1.0.0)
       xkcd
-    json (1.7.6)
-    json (1.7.6-java)
+    json (1.8.3)
+    json (1.8.3-java)
     mechanize (2.7.2)
       domain_name (~> 0.5, >= 0.5.1)
       http-cookie (~> 1.0.0)
@@ -128,9 +118,9 @@ GEM
       webrobots (>= 0.0.9, < 0.2)
     method_source (0.8.1)
     mime-types (1.20.1)
-    multi_json (1.5.0)
+    multi_json (1.12.1)
     multi_xml (0.5.4)
-    multipart-post (1.1.5)
+    multipart-post (2.0.0)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
     net-ssh (2.6.8)
@@ -165,17 +155,22 @@ GEM
       mechanize (>= 1.0.0)
       require_all (>= 1.1.0)
     simple_oauth (0.1.9)
+    slack-api (1.2.4)
+      faraday (>= 0.7, < 0.10)
+      faraday_middleware (~> 0.8)
+      faye-websocket (~> 0.9.2)
+      multi_json (~> 1.0, >= 1.0.3)
     slop (3.4.3)
     spoon (0.0.1)
     timecop (0.5.9.1)
-    tinder (1.9.2)
+    tinder (1.10.1)
       eventmachine (~> 1.0)
-      faraday (~> 0.8)
+      faraday (~> 0.9.0)
       faraday_middleware (~> 0.9)
-      hashie (~> 1.0)
-      json (~> 1.7.5)
-      mime-types (~> 1.19)
-      multi_json (~> 1.5)
+      hashie (>= 1.0)
+      json (~> 1.8.0)
+      mime-types
+      multi_json (~> 1.7)
       twitter-stream (~> 0.1)
     twitter-stream (0.1.16)
       eventmachine (>= 0.12.8)
@@ -187,9 +182,9 @@ GEM
     unf (0.1.4-java)
     unf_ext (0.0.7.1)
     webrobots (0.1.1)
-    websocket-driver (0.5.4)
+    websocket-driver (0.6.4)
       websocket-extensions (>= 0.1.0)
-    websocket-driver (0.5.4-java)
+    websocket-driver (0.6.4-java)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
     whois (3.5.9)
@@ -241,9 +236,9 @@ DEPENDENCIES
   pry
   pry-rescue
   rspec
-  slack-api!
+  slack-api (>= 1.2.4)
   smackr (= 0.0.6)!
   timecop
-  tinder
+  tinder (= 1.10.1)
   tzinfo
   xmpp4r!

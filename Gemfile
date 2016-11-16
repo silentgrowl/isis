@@ -1,10 +1,10 @@
 source 'https://www.rubygems.org'
 
-# The released xmppr4 gem is quite dated, and has bugs
+# The released xmpp4r gem is quite dated, and has bugs
 gem 'xmpp4r', git: 'https://github.com/silentgrowl/xmpp4r.git', platforms: :ruby
 gem 'smackr', '0.0.6', git: 'https://github.com/silentgrowl/smackr.git', platforms: :jruby
-gem 'slack-api', github: 'brendonrapp/slack-ruby-gem'
-gem 'tinder' # Campfire
+gem 'slack-api', '>= 1.2.4'
+gem 'tinder', '1.10.1' # Campfire
 gem 'hipchat' # HipChat
 gem 'eventmachine'
 gem 'daemons'
@@ -12,6 +12,9 @@ gem 'activesupport'
 gem 'net-ssh'
 gem 'tzinfo'
 gem 'ffi'
+
+# Lock rack < 2.0 for Ruby 2.1.x compatability
+# gem 'rack', '< 2.0.0'
 
 group :development do
   gem 'pry'
